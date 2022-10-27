@@ -32,6 +32,7 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("saturation").setExecutor(new SaturationCommand());
         getCommand("ebroadcast").setExecutor(new BroadcastCommand());
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
+        getCommand("spawn").setExecutor(new SpawnCommand(this));
 
         //config.yml
         getConfig().options().copyDefaults();
