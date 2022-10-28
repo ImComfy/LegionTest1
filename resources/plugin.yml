@@ -34,12 +34,22 @@ commands:
   setspawn:
     description: Set default spawn
     permission: legiontest.setspawn
+  spawn:
+    description: Sends you to spawn
+  menu:
+    description: Opens a menu
+  rules:
+    description: Shows you the server rules
+permissions:
+  legiontest.spawnothers:
+    description: Allows the use of /spawn (player)
 groups:
   default:
     permissions:
       permissions.build: false
       legiontest.broadcast: false
       legiontest.setspawn: false
+      legiontest.spawnothers: false
       default: not op
   admin:
     permissions:
@@ -47,6 +57,7 @@ groups:
       legiontest.banjoins: true
       legiontest.broadcast: true
       legiontest.setspawn: true
+      legiontest.spawnothers: true
       default: op
 messages:
   build: "&cYou don't have permission to build."
