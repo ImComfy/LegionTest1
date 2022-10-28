@@ -1,8 +1,7 @@
 package me.comfy.legiontest1;
 
 import me.comfy.legiontest1.commands.*;
-import me.comfy.legiontest1.listeners.BannedPlayerJoin;
-import me.comfy.legiontest1.listeners.XPBottleBreakListener;
+import me.comfy.legiontest1.listeners.*;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -23,6 +22,8 @@ public final class LegionTest1 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LegionTest1Listener(), this);
         getServer().getPluginManager().registerEvents(new XPBottleBreakListener(), this);
         getServer().getPluginManager().registerEvents(new BannedPlayerJoin(), this);
+        getServer().getPluginManager().registerEvents(new SpawnListeners(this), this);
+        getServer().getPluginManager().registerEvents(new MenuListener(), this);
 
         getCommand("holyshitlegionsmp").setExecutor(new LegionTest1Listener());
         getCommand("etime").setExecutor(new TimeCommand());
@@ -33,6 +34,8 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("ebroadcast").setExecutor(new BroadcastCommand());
         getCommand("setspawn").setExecutor(new SetSpawnCommand(this));
         getCommand("spawn").setExecutor(new SpawnCommand(this));
+        getCommand("menu").setExecutor(new MenuCommand());
+        getCommand("rules").setExecutor(new RulesCommand());
 
         //config.yml
         getConfig().options().copyDefaults();
