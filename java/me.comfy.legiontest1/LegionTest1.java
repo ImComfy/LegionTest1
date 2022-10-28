@@ -28,7 +28,6 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("holyshitlegionsmp").setExecutor(new LegionTest1Listener());
         getCommand("etime").setExecutor(new TimeCommand());
         getCommand("god").setExecutor(new GodCommand());
-        getCommand("fly").setExecutor(new FlyCommand());
         getCommand("feed").setExecutor(new FeedCommand());
         getCommand("saturation").setExecutor(new SaturationCommand());
         getCommand("ebroadcast").setExecutor(new BroadcastCommand());
@@ -36,6 +35,7 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("spawn").setExecutor(new SpawnCommand(this));
         getCommand("menu").setExecutor(new MenuCommand());
         getCommand("rules").setExecutor(new RulesCommand());
+        getCommand("fly").setExecutor(new FlyCommand());
 
         //config.yml
         getConfig().options().copyDefaults();
