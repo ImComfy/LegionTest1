@@ -17,9 +17,6 @@ commands:
     usage: /god
   feed:
     description: Get max food level
-  fly:
-    description: Lets you fly
-    usage: /fly
   saturation:
     description: Get max saturation level
   maxHealth:
@@ -40,9 +37,17 @@ commands:
     description: Opens a menu
   rules:
     description: Shows you the server rules
+  fly:
+    description: Allows you to fly
+  tpbow:
+    description: Gives you a bow that teleports you wherever its arrow lands.
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)
+  legiontest.fly:
+    description: Allows the use of /fly
+  legiontest.tpbow:
+    description: Allows the use of /tpbow
 groups:
   default:
     permissions:
