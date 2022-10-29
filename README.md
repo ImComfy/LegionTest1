@@ -1,7 +1,7 @@
 # LegionTest1
 
-## Hi, this is a test
+## Hi, this is a plugin to show off my progress in my java learning course.
  
-### This will soon be the **official** Legion *smp* core plugin.
+### This will soon be the **official** Legion smp core plugin.
  ---
- Among us.
+ Don't expect much yet.
