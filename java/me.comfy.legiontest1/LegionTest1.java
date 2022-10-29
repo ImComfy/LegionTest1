@@ -24,6 +24,7 @@ public final class LegionTest1 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BannedPlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new SpawnListeners(this), this);
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
+        getServer().getPluginManager().registerEvents(new TPBowListener(this), this);
 
         getCommand("holyshitlegionsmp").setExecutor(new LegionTest1Listener());
         getCommand("etime").setExecutor(new TimeCommand());
@@ -36,6 +37,7 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("menu").setExecutor(new MenuCommand());
         getCommand("rules").setExecutor(new RulesCommand());
         getCommand("fly").setExecutor(new FlyCommand());
+        getCommand("tpbow").setExecutor(new GiveBowCommand(plugin));
 
         //config.yml
         getConfig().options().copyDefaults();
