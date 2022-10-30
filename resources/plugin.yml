@@ -41,6 +41,10 @@ commands:
     description: Allows you to fly
   tpbow:
     description: Gives you a bow that teleports you wherever its arrow lands.
+  armorstand:
+    description: that's a very good question
+  gui:
+    description: Opens a GUI.
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)
