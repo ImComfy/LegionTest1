@@ -45,6 +45,8 @@ commands:
     description: that's a very good question
   gui:
     description: Opens a GUI.
+  asgui:
+    description: Create an armorstand.
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)
