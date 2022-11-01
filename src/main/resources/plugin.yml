@@ -1,0 +1,74 @@
+name: LegionTest1
+version: '${project.version}'
+main: me.comfy.legiontest1.LegionTest1
+api-version: 1.19
+authors: [ ImComfy ]
+description: test for Legion plugin
+website: https://twitch.tv/imcomfi
+commands:
+  holyshitlegionsmp:
+    description: Introduces you to legion
+    usage: /holyshitlegionsmp
+  etime:
+    description: tells you the time idiot
+    usage: /etime
+  god:
+    description: Become invincible
+    usage: /god
+  feed:
+    description: Get max food level
+  saturation:
+    description: Get max saturation level
+  maxHealth:
+    description: Tells you the max amount of hearts you can get on the server.
+    aliases:
+      - maxHearts
+  setHealth:
+    description: Sets max player health
+  ebroadcast:
+    description: sends a public message to all players
+    permission: legiontest.broadcast
+  setspawn:
+    description: Set default spawn
+    permission: legiontest.setspawn
+  spawn:
+    description: Sends you to spawn
+  menu:
+    description: Opens a menu
+  rules:
+    description: Shows you the server rules
+  fly:
+    description: Allows you to fly
+  tpbow:
+    description: Gives you a bow that teleports you wherever its arrow lands.
+  armorstand:
+    description: that's a very good question
+  gui:
+    description: Opens a GUI.
+  asgui:
+    description: Create an armorstand.
+permissions:
+  legiontest.spawnothers:
+    description: Allows the use of /spawn (player)
+  legiontest.fly:
+    description: Allows the use of /fly
+  legiontest.tpbow:
+    description: Allows the use of /tpbow
+groups:
+  default:
+    permissions:
+      permissions.build: false
+      legiontest.broadcast: false
+      legiontest.setspawn: false
+      legiontest.spawnothers: false
+      default: not op
+  admin:
+    permissions:
+      permissions.*: true
+      legiontest.banjoins: true
+      legiontest.broadcast: true
+      legiontest.setspawn: true
+      legiontest.spawnothers: true
+      default: op
+messages:
+  build: "&cYou don't have permission to build."

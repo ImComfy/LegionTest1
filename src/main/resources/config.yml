@@ -1,0 +1,13 @@
+# This will control the amount of maximum hearts/health the player can get.
+Max health: '40'
+# This will give a bow that teleports the player to wherever the arrow lands as soon as the player joins the server.
+give-bow-on-join: true
+# This will change the name of the bow given when /tpbow is used, or when a player joins the server
+# (if give-bow-on-join is true)
+bow-name: '&f[&eTeleport&aBow&f]'
+# This will change the description of the bow given when /tpbow is used, or when a player joins the server
+# (if give-bow-on-join is true)
+bow-description: '&6Shoot your shot..'
+# This will control wether turtles will spawn when a player moves
+# This will be very laggy.
+turtle-spam: false
