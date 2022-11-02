@@ -47,6 +47,8 @@ commands:
     description: Opens a GUI.
   asgui:
     description: Create an armorstand.
+  hologram:
+    description: Spawns a hologram.
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)

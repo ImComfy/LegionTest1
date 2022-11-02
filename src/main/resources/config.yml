@@ -11,3 +11,5 @@ bow-description: '&6Shoot your shot..'
 # This will control wether turtles will spawn when a player moves
 # This will be very laggy.
 turtle-spam: false
+# This is the message that will be sent to the player once they're done creating an armorstand.
+create-message: '&6Created armor stand.'

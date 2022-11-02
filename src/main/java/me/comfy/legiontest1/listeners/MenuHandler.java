@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 
@@ -29,6 +30,7 @@ public class MenuHandler implements Listener {
         final String MAIN_MENU = ChatColor.BLUE + "Armor Stand GUI";
         final String CREATE_MENU = ChatColor.GREEN + "Create an armorstand";
         final String CONFIRM_MENU = ChatColor.GREEN + "Are you sure?";
+        final String ARMOR_MENU = ChatColor.BLUE + "Choose some armor";
 
         if (e.getView().getTitle().equalsIgnoreCase(MAIN_MENU)) {
             switch (e.getCurrentItem().getType()) {
@@ -59,6 +61,7 @@ public class MenuHandler implements Listener {
                     break;
                 case NETHERITE_HELMET:
                     //Armor select menu
+                    plugin.openArmorMenu(p);
                     break;
                 case STONE_SLAB:
                     plugin.openConfirmMenu(p, Material.STONE_SLAB);
@@ -69,6 +72,7 @@ public class MenuHandler implements Listener {
                         ArmorStand stand = plugin.armorstands.get(p);
                         stand.setVisible(true);
                         plugin.armorstands.remove(p);
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("create-message")));
                     }
                     break;
                 case BARRIER:
@@ -137,6 +141,47 @@ public class MenuHandler implements Listener {
                 }
 
                 e.setCancelled(true);
+            }else if(e.getView().getTitle().equalsIgnoreCase(ARMOR_MENU)){
+                if(plugin.armorstands.containsKey(p)){
+                    ArmorStand stand = plugin.armorstands.get(p);
+                    switch(e.getCurrentItem().getType()){
+                        case NETHERITE_HELMET:
+                            if(stand.getEquipment().getHelmet().getType() == Material.NETHERITE_HELMET){
+                                stand.getEquipment().setHelmet(null);
+                                break;
+                            }else{
+                                stand.getEquipment().setHelmet(new ItemStack(Material.NETHERITE_HELMET));
+                                break;
+                            }
+                        case NETHERITE_CHESTPLATE:
+                            if(stand.getEquipment().getChestplate().getType() == Material.NETHERITE_CHESTPLATE){
+                                stand.getEquipment().setChestplate(null);
+                                break;
+                            }else{
+                                stand.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
+                                break;
+                            }
+                        case NETHERITE_LEGGINGS:
+                            if(stand.getEquipment().getLeggings().getType() == Material.NETHERITE_LEGGINGS){
+                                stand.getEquipment().setLeggings(null);
+                                break;
+                            }else{
+                                stand.getEquipment().setLeggings(new ItemStack(Material.NETHERITE_LEGGINGS));
+                                break;
+                            }
+                        case NETHERITE_BOOTS:
+                            if(stand.getEquipment().getBoots().getType() == Material.NETHERITE_BOOTS){
+                                stand.getEquipment().setBoots(null);
+                                break;
+                            }else{
+                                stand.getEquipment().setBoots(new ItemStack(Material.NETHERITE_BOOTS));
+                                break;
+                            }
+                        case GREEN_CONCRETE:
+                            plugin.openCreateMenu(p);
+                    }
+                    e.setCancelled(true);
+                }
             }
         }
     }

@@ -55,6 +55,7 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("armorstand").setExecutor(new ArmorStandCommand());
         getCommand("gui").setExecutor(new GuiCommand());
         getCommand("asgui").setExecutor(new ASGUICommand(this));
+        getCommand("hologram").setExecutor(new HologramCommand());
 
         //config.yml
         getConfig().options().copyDefaults();
@@ -145,6 +146,27 @@ public final class LegionTest1 extends JavaPlugin {
         confirmMenu.setItem(23, no);
 
         p.openInventory(confirmMenu);
+    }
+
+    public void openArmorMenu(Player p){
+        Inventory armorMenu = Bukkit.createInventory(p, 45, ChatColor.BLUE + "Choose some armor");
+
+        ItemStack head = new ItemStack(Material.NETHERITE_HELMET);
+        ItemStack body = new ItemStack(Material.NETHERITE_CHESTPLATE);
+        ItemStack legs = new ItemStack(Material.NETHERITE_LEGGINGS);
+        ItemStack boots = new ItemStack(Material.NETHERITE_BOOTS);
+
+        ItemStack confirm = new ItemStack(Material.GREEN_CONCRETE);
+        ItemMeta confirmMeta = confirm.getItemMeta();
+        confirmMeta.setDisplayName(ChatColor.GREEN + "Done");
+        confirm.setItemMeta(confirmMeta);
+
+        armorMenu.setItem(11, head);
+        armorMenu.setItem(12, body);
+        armorMenu.setItem(14, legs);
+        armorMenu.setItem(15, boots);
+        armorMenu.setItem(40, confirm);
+        p.openInventory(armorMenu);
     }
 
 
