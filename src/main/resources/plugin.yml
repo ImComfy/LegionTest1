@@ -49,6 +49,10 @@ commands:
     description: Create an armorstand.
   hologram:
     description: Spawns a hologram.
+  sign:
+    description: I'm getting bored
+  punish:
+    description: Opens a GUI to punish players.
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)
@@ -56,6 +60,8 @@ permissions:
     description: Allows the use of /fly
   legiontest.tpbow:
     description: Allows the use of /tpbow
+  legiontest.banalerts:
+    description: Players with said permission get chat alerts once a player has been banned.
 groups:
   default:
     permissions:

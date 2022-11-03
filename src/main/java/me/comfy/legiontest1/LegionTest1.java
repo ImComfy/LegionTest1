@@ -39,6 +39,8 @@ public final class LegionTest1 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MoveEvent(plugin), this);
         getServer().getPluginManager().registerEvents(new GuiListener(), this);
         getServer().getPluginManager().registerEvents(new MenuHandler(this), this);
+        getServer().getPluginManager().registerEvents(new SignEvent(), this);
+        getServer().getPluginManager().registerEvents(new PunishInventoryListener(this), this);
 
         getCommand("holyshitlegionsmp").setExecutor(new LegionTest1Listener());
         getCommand("etime").setExecutor(new TimeCommand());
@@ -56,6 +58,8 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("gui").setExecutor(new GuiCommand());
         getCommand("asgui").setExecutor(new ASGUICommand(this));
         getCommand("hologram").setExecutor(new HologramCommand());
+        getCommand("sign").setExecutor(new SignCommand());
+        getCommand("punish").setExecutor(new PunishCommand());
 
         //config.yml
         getConfig().options().copyDefaults();
