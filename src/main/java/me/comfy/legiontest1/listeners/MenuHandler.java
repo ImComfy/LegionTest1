@@ -49,6 +49,7 @@ public class MenuHandler implements Listener {
             if (!plugin.armorstands.containsKey(p)) {
                 ArmorStand stand = (ArmorStand) p.getWorld().spawnEntity(p.getLocation(), EntityType.ARMOR_STAND);
                 stand.setVisible(false);
+                stand.setInvulnerable(true);
                 plugin.armorstands.put(p, stand);
             }
 

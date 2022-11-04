@@ -24,33 +24,42 @@ public class PunishInventoryListener implements Listener {
 
         Player p = (Player) e.getWhoClicked();
 
+        //Check inventory
         if(e.getView().getTitle().equalsIgnoreCase(ChatColor.BLUE + "Player List")){
-
+            //Make sure they clicked a player head
             if(e.getCurrentItem().getType() == Material.PLAYER_HEAD){
 
-                Player whoToBan = p.getServer().getPlayerExact(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
+                Player whoToBan = LegionTest1.getPlugin().getServer().getPlayerExact(ChatColor.stripColor(e.getCurrentItem().getItemMeta().getDisplayName()));
 
                 PunishMenuUtils.openConfirmBanMenu(p, whoToBan);
 
             }
 
-            e.setCancelled(true);
         }else if(e.getView().getTitle().equalsIgnoreCase(ChatColor.RED + "Are you sure?")){
 
-            if(e.getCurrentItem().getType() == Material.BARRIER){
-                PunishMenuUtils.openBanMenu(p);
-            }else if(e.getCurrentItem().getType() == Material.NETHERITE_AXE){
-                String name = ChatColor.stripColor(e.getClickedInventory().getItem(4).getItemMeta().getDisplayName());
-                p.getServer().getBanList(BanList.Type.NAME).addBan(name, "L", null, null);
+            switch(e.getCurrentItem().getType()){
+                case BARRIER:
+                    PunishMenuUtils.openBanMenu(p);
+                    break;
+                case NETHERITE_AXE:
+                    //Get username
+                    String name = e.getClickedInventory().getItem(4).getItemMeta().getDisplayName();
+                    p.getServer().getBanList(BanList.Type.IP).addBan(ChatColor.stripColor(name), "L", null, "legion");
+                    p.kickPlayer(ChatColor.RED + "L bozo");
+            }
+
                 for(Player player : Bukkit.getOnlinePlayers()){
                     if(player.hasPermission("legiontest.banalerts")){
+                        String name = ChatColor.stripColor(e.getClickedInventory().getItem(4).getItemMeta().getDisplayName());
                         player.sendMessage(ChatColor.RED + name + "has been banned.");
                     }
                 }
-            }
+
 
         }
 
+        //stop players from moving items
+        e.setCancelled(true);
     }
 
 }

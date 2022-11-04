@@ -32,13 +32,14 @@ public class TPBowListener implements Listener {
 
             ItemStack itemInMainHand = p.getInventory().getItemInMainHand();
 
-            if (itemInMainHand.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("bow-name"))));
+            if (itemInMainHand.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("bow-name")))) {
 
-            Location location = e.getEntity().getLocation();
+                Location location = e.getEntity().getLocation();
 
-            p.teleport(location);
-            e.getEntity().remove();
-            p.playSound(p, Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 1.0f);
+                p.teleport(location);
+                e.getEntity().remove();
+                p.playSound(p, Sound.ENTITY_ENDERMAN_TELEPORT, 1.0f, 1.0f);
+            }
 
         }
 

@@ -28,10 +28,12 @@ public class GuiListener implements Listener {
                     p.closeInventory();
                     p.setSaturation(20);
                     p.sendMessage(ChatColor.YELLOW + "Maximized your saturation.");
+                    break;
                 case IRON_SWORD:
                     p.closeInventory();
                     p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 1000, 1));
                     p.sendMessage(ChatColor.GOLD + "Received strength.");
+                    break;
             }
 
         }
