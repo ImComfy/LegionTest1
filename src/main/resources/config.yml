@@ -8,8 +8,12 @@ bow-name: '&f[&eTeleport&aBow&f]'
 # This will change the description of the bow given when /tpbow is used, or when a player joins the server
 # (if give-bow-on-join is true)
 bow-description: '&6Shoot your shot..'
-# This will control wether turtles will spawn when a player moves
+# This will control wether turtles will spawn when a player moves.
 # This will be very laggy.
 turtle-spam: false
 # This is the message that will be sent to the player once they're done creating an armorstand.
 create-message: '&6Created armor stand.'
+# If you have a world border in your server, enable this and check next option.
+world-border: true
+# If world-border is set to true, make this whatever your world border is set to.
+border: 200
