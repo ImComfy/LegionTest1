@@ -53,6 +53,10 @@ commands:
     description: I'm getting bored
   punish:
     description: Opens a GUI to punish players.
+  rtp:
+    description: Teleports you to a random location in the world.
+  vanish:
+    description: Hides you like the little introvert you are.
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)
@@ -62,6 +66,8 @@ permissions:
     description: Allows the use of /tpbow
   legiontest.banalerts:
     description: Players with said permission get chat alerts once a player has been banned.
+  legiontest.rtpothers:
+    description: Allows the use of /rtp (player)
 groups:
   default:
     permissions:

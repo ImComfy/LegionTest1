@@ -2,6 +2,7 @@ package me.comfy.legiontest1;
 
 import me.comfy.legiontest1.commands.*;
 import me.comfy.legiontest1.listeners.*;
+import me.comfy.legiontest1.utility.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -22,6 +23,8 @@ public final class LegionTest1 extends JavaPlugin {
 
     public HashMap<Player, ArmorStand> armorstands = new HashMap<>();
 
+    public ArrayList<Player> vanishedlist = new ArrayList<>();
+
     private static LegionTest1 plugin;
 
     @Override
@@ -41,6 +44,7 @@ public final class LegionTest1 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MenuHandler(this), this);
         getServer().getPluginManager().registerEvents(new SignEvent(), this);
         getServer().getPluginManager().registerEvents(new PunishInventoryListener(this), this);
+        getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
 
         getCommand("holyshitlegionsmp").setExecutor(new LegionTest1Listener());
         getCommand("etime").setExecutor(new TimeCommand());
@@ -60,6 +64,11 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("hologram").setExecutor(new HologramCommand());
         getCommand("sign").setExecutor(new SignCommand());
         getCommand("punish").setExecutor(new PunishCommand());
+        getCommand("rtp").setExecutor(new RTPCommand());
+        getCommand("vanish").setExecutor(new VanishCommand(this));
+
+        //Access TeleportUtils.java
+        TeleportUtils utils = new TeleportUtils(this);
 
         //config.yml
         getConfig().options().copyDefaults();
