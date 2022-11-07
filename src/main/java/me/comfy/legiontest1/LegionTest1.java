@@ -1,8 +1,12 @@
 package me.comfy.legiontest1;
 
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
 import me.comfy.legiontest1.commands.*;
 import me.comfy.legiontest1.listeners.*;
 import me.comfy.legiontest1.utility.*;
+import org.bson.Document;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -66,6 +70,8 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("punish").setExecutor(new PunishCommand());
         getCommand("rtp").setExecutor(new RTPCommand());
         getCommand("vanish").setExecutor(new VanishCommand(this));
+        getCommand("tp").setExecutor(new TeleportCommand());
+        getCommand("tpall").setExecutor(new TeleportAllCommand());
 
         //Access TeleportUtils.java
         TeleportUtils utils = new TeleportUtils(this);
