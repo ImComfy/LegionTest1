@@ -60,6 +60,8 @@ commands:
   tp:
     aliases:
       - teleport
+  gameover:
+    description: Call the GameEndEvent
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)
@@ -95,3 +97,5 @@ groups:
       default: op
 messages:
   build: "&cYou don't have permission to build."
+softdepend:
+  - [ProtocolLib]

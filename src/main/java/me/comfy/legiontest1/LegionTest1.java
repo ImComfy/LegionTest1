@@ -1,5 +1,6 @@
 package me.comfy.legiontest1;
 
+import com.comphenix.protocol.ProtocolLibrary;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -49,6 +50,7 @@ public final class LegionTest1 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new SignEvent(), this);
         getServer().getPluginManager().registerEvents(new PunishInventoryListener(this), this);
         getServer().getPluginManager().registerEvents(new JoinEvent(this), this);
+        getServer().getPluginManager().registerEvents(new GameListener(), this);
 
         getCommand("holyshitlegionsmp").setExecutor(new LegionTest1Listener());
         getCommand("etime").setExecutor(new TimeCommand());
@@ -72,6 +74,10 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("vanish").setExecutor(new VanishCommand(this));
         getCommand("tp").setExecutor(new TeleportCommand());
         getCommand("tpall").setExecutor(new TeleportAllCommand());
+        getCommand("gameover").setExecutor(new GameOverCommand());
+
+        //Import ProtocolLib
+        ProtocolLibrary.getProtocolManager();
 
         //Access TeleportUtils.java
         TeleportUtils utils = new TeleportUtils(this);
