@@ -79,6 +79,8 @@ permissions:
     description: Allows the use of /tp (player1) (player2)
   legiontest.tpall:
     description: Allows the use of /tpall and /tpall (player)
+  legiontest.silkspawner:
+    description: Allows picking up spawners using silk touch.
 groups:
   default:
     permissions:
