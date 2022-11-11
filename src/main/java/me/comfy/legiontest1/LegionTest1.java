@@ -1,6 +1,5 @@
 package me.comfy.legiontest1;
 
-import com.comphenix.protocol.ProtocolLibrary;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -77,9 +76,6 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("tp").setExecutor(new TeleportCommand());
         getCommand("tpall").setExecutor(new TeleportAllCommand());
         getCommand("gameover").setExecutor(new GameOverCommand());
-
-        //Import ProtocolLib
-        ProtocolLibrary.getProtocolManager();
 
         //Access TeleportUtils.java
         TeleportUtils utils = new TeleportUtils(this);
