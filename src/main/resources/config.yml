@@ -17,3 +17,11 @@ create-message: '&6Created armor stand.'
 world-border: true
 # If world-border is set to true, make this whatever your world border is set to.
 border: 200
+# Will send a message in console every 5 seconds. If true, check the next option.
+send-message: false
+# Choose what you want your message to be.
+scheduled-message: '&cTask run successfully'
+# If you want to keep the weather clear and time at day at all times, set this to true.
+perfect-day: true
+# If "perfect-day" is set to true, change this to the name of your world.
+world-name: 'world'

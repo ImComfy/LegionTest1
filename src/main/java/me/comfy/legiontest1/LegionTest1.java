@@ -5,6 +5,8 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import me.comfy.legiontest1.commands.*;
 import me.comfy.legiontest1.listeners.*;
+import me.comfy.legiontest1.tasks.KeepDayTask;
+import me.comfy.legiontest1.tasks.TaskExample;
 import me.comfy.legiontest1.utility.*;
 import org.bson.Document;
 import org.bukkit.Bukkit;
@@ -19,6 +21,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +55,7 @@ public final class LegionTest1 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new GameListener(), this);
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new CustomListeners(), this);
+        getServer().getPluginManager().registerEvents(new WeatherListener(this), this);
 
         getCommand("holyshitlegionsmp").setExecutor(new LegionTest1Listener());
         getCommand("etime").setExecutor(new TimeCommand());
@@ -79,6 +83,28 @@ public final class LegionTest1 extends JavaPlugin {
 
         //Access TeleportUtils.java
         TeleportUtils utils = new TeleportUtils(this);
+
+        //Schedule taskExample.java if "send-message" is true in config
+        if (getConfig().getBoolean("send-message")){
+            BukkitTask taskExample = new TaskExample(this).runTaskTimer(this, 0, 100L);
+        }
+
+        /*This works too:
+        new BukkitRunnable() {
+        if (getConfig().getBoolean("send-message")){
+                @Override
+                public void run() {
+                    getLogger().info(ChatColor.translateAlternateColorCodes('&', getConfig().getString("scheduled-message")));
+                }
+            }
+        }
+        **This doesn't require a new class.**
+        */
+
+        //Schedule KeepDayTask.java
+        if (getConfig().getBoolean("perfect-day")) {
+            BukkitTask keepDayTask = new KeepDayTask(this).runTaskTimer(this, 0, 100L);
+        }
 
         //config.yml
         getConfig().options().copyDefaults();
