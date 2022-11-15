@@ -56,6 +56,7 @@ public final class LegionTest1 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockBreakListener(), this);
         getServer().getPluginManager().registerEvents(new CustomListeners(), this);
         getServer().getPluginManager().registerEvents(new WeatherListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
 
         getCommand("holyshitlegionsmp").setExecutor(new LegionTest1Listener());
         getCommand("etime").setExecutor(new TimeCommand());

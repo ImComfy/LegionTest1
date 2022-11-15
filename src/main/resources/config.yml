@@ -25,3 +25,11 @@ scheduled-message: '&cTask run successfully'
 perfect-day: true
 # If "perfect-day" is set to true, change this to the name of your world.
 world-name: 'world'
+# If you want an MOTD, set this to true and check the next option.
+motd: true
+# Select the MOTDs you want to be shown.
+motd-messages:
+  - '&cwowo its a motd!'
+  - '&6oh em jee'
+  - '&bhello socks'
+  - 'https://nohello.net/'
