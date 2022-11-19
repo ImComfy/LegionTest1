@@ -60,6 +60,8 @@ commands:
   tp:
     aliases:
       - teleport
+  badday:
+    description: :)
   gameover:
     description: Call the GameEndEvent
 permissions:

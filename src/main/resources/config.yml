@@ -33,3 +33,14 @@ motd-messages:
   - '&6oh em jee'
   - '&bhello socks'
   - 'https://nohello.net/'
+# If you want a certain block to give the player a boost in the air when they walk on it, enable this, and view the next two options
+block-boost: true
+# If "block-boost" is true, choose what block it will be. Here's a full list of the blocks you can use: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html
+top-block: 'STONE_PRESSURE_PLATE'
+# If "block-boost" is true and "top-block" has been set, choose what block has to be under the pressure plate for this to work.
+bottom-block: 'REDSTONE_BLOCK'
+# If "block-boost" and all of its required options are set, choose how big you want the boost to be.
+y-velocity: 2 # How high you want to go (not exact)
+velocity-multiplier: 3 # How fast you want to go
+# If "block-boost" and all of its required options are set, choose if you want the player to take damage when they hit the ground.
+disable-fall-damage: true

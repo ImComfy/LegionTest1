@@ -1,14 +1,10 @@
 package me.comfy.legiontest1;
 
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
-import com.mongodb.client.MongoCollection;
 import me.comfy.legiontest1.commands.*;
 import me.comfy.legiontest1.listeners.*;
 import me.comfy.legiontest1.tasks.KeepDayTask;
 import me.comfy.legiontest1.tasks.TaskExample;
 import me.comfy.legiontest1.utility.*;
-import org.bson.Document;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -32,6 +28,8 @@ public final class LegionTest1 extends JavaPlugin {
 
     public ArrayList<Player> vanishedlist = new ArrayList<>();
 
+    public ArrayList<Player> jumpingPlayers = new ArrayList<>();
+
     private static LegionTest1 plugin;
 
     @Override
@@ -40,7 +38,7 @@ public final class LegionTest1 extends JavaPlugin {
 
         plugin = this;
 
-        getServer().getPluginManager().registerEvents(new LegionTest1Listener(), this);
+        //register the listener
         getServer().getPluginManager().registerEvents(new XPBottleBreakListener(), this);
         getServer().getPluginManager().registerEvents(new BannedPlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new SpawnListeners(this), this);
@@ -57,8 +55,9 @@ public final class LegionTest1 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CustomListeners(), this);
         getServer().getPluginManager().registerEvents(new WeatherListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+        getServer().getPluginManager().registerEvents(new FallDamageListener(this), this);
 
-        getCommand("holyshitlegionsmp").setExecutor(new LegionTest1Listener());
+        //register the commands
         getCommand("etime").setExecutor(new TimeCommand());
         getCommand("god").setExecutor(new GodCommand());
         getCommand("feed").setExecutor(new FeedCommand());
@@ -81,6 +80,7 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("tp").setExecutor(new TeleportCommand());
         getCommand("tpall").setExecutor(new TeleportAllCommand());
         getCommand("gameover").setExecutor(new GameOverCommand());
+        getCommand("badday").setExecutor(new BadDayCommand());
 
         //Access TeleportUtils.java
         TeleportUtils utils = new TeleportUtils(this);
