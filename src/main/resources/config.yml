@@ -44,3 +44,8 @@ y-velocity: 2 # How high you want to go (not exact)
 velocity-multiplier: 3 # How fast you want to go
 # If "block-boost" and all of its required options are set, choose if you want the player to take damage when they hit the ground.
 disable-fall-damage: true
+# If you want to allow the usage of /staffhome, set this to true.
+staffhome-enable: true
+
+# DO NOT TOUCH THIS
+savedlocations:

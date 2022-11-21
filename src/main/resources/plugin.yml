@@ -62,6 +62,8 @@ commands:
       - teleport
   badday:
     description: :)
+  staffhome:
+    description: Set a temporary home that may be removed once returned to.
   gameover:
     description: Call the GameEndEvent
 permissions:
@@ -83,6 +85,8 @@ permissions:
     description: Allows the use of /tpall and /tpall (player)
   legiontest.silkspawner:
     description: Allows picking up spawners using silk touch.
+  legiontest.staffhome:
+    description: Allows the usage of /staffhome
 groups:
   default:
     permissions:

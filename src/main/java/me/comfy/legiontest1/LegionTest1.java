@@ -38,7 +38,11 @@ public final class LegionTest1 extends JavaPlugin {
 
         plugin = this;
 
-        //register the listener
+        //config.yml
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
+        //register the listeners
         getServer().getPluginManager().registerEvents(new XPBottleBreakListener(), this);
         getServer().getPluginManager().registerEvents(new BannedPlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new SpawnListeners(this), this);
@@ -81,6 +85,7 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("tpall").setExecutor(new TeleportAllCommand());
         getCommand("gameover").setExecutor(new GameOverCommand());
         getCommand("badday").setExecutor(new BadDayCommand());
+        getCommand("staffhome").setExecutor(new StaffHomeCommand(this));
 
         //Access TeleportUtils.java
         TeleportUtils utils = new TeleportUtils(this);
@@ -107,11 +112,8 @@ public final class LegionTest1 extends JavaPlugin {
             BukkitTask keepDayTask = new KeepDayTask(this).runTaskTimer(this, 0, 100L);
         }
 
-        //config.yml
-        getConfig().options().copyDefaults();
-        saveDefaultConfig();
-
         getLogger().info("Plugin enabled.");
+
     }
 
     public void openMainMenu(Player p) {
