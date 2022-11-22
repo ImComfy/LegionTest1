@@ -87,6 +87,8 @@ permissions:
     description: Allows picking up spawners using silk touch.
   legiontest.staffhome:
     description: Allows the usage of /staffhome
+  legiontest.staffhomeother:
+    description: Allows the usage of /staffhome (player)
 groups:
   default:
     permissions:

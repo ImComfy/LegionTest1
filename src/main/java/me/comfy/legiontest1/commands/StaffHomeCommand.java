@@ -7,7 +7,10 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+
+import static org.bukkit.Bukkit.getLogger;
 
 public class StaffHomeCommand implements CommandExecutor {
 
@@ -47,23 +50,29 @@ public class StaffHomeCommand implements CommandExecutor {
                             p.sendMessage(ChatColor.DARK_RED + "You never set a staff home!");
                         }
                     }else if (args.length == 1){
-                        Player target = Bukkit.getPlayer(args[0]);
-                        if (target == null){
-                            p.sendMessage(ChatColor.RED + "That player is not online.");
-                        }else {
-                            if (plugin.getConfig().isConfigurationSection("savedlocations." + target.getName())){
-                                Location returnLocation = new Location(target.getWorld(), plugin.getConfig().getDouble("savedlocations." + target.getName() + ".x"), plugin.getConfig().getDouble("savedlocations." + target.getName() + ".y"), plugin.getConfig().getDouble("savedlocations." + target.getName() + ".z"));
-                                p.teleport(returnLocation);
-                                p.sendMessage(ChatColor.GREEN + "Successfully teleported to the staff home of " + target.getDisplayName() + " at " + ChatColor.GRAY + Math.round(plugin.getConfig().getDouble("savedlocations." + target.getName() + ".x")) + "/" + Math.round(plugin.getConfig().getDouble("savedlocations." + target.getName() + ".y")) + "/" + Math.round(plugin.getConfig().getDouble("savedlocations." + target.getName() + ".z")));
-                            }else {
-                                p.sendMessage(ChatColor.DARK_RED + "That player does not have a set staff home.");
+                        if (p.hasPermission("legiontest.staffhomeother")) {
+                            Player target = Bukkit.getPlayer(args[0]);
+                            if (target == null) {
+                                p.sendMessage(ChatColor.RED + "That player is not online.");
+                            } else {
+                                if (plugin.getConfig().isConfigurationSection("savedlocations." + target.getName())) {
+                                    Location returnLocation = new Location(target.getWorld(), plugin.getConfig().getDouble("savedlocations." + target.getName() + ".x"), plugin.getConfig().getDouble("savedlocations." + target.getName() + ".y"), plugin.getConfig().getDouble("savedlocations." + target.getName() + ".z"));
+                                    p.teleport(returnLocation);
+                                    p.sendMessage(ChatColor.GREEN + "Successfully teleported to the staff home of " + target.getDisplayName() + " at " + ChatColor.GRAY + Math.round(plugin.getConfig().getDouble("savedlocations." + target.getName() + ".x")) + "/" + Math.round(plugin.getConfig().getDouble("savedlocations." + target.getName() + ".y")) + "/" + Math.round(plugin.getConfig().getDouble("savedlocations." + target.getName() + ".z")));
+                                } else {
+                                    p.sendMessage(ChatColor.DARK_RED + "That player does not have a set staff home.");
+                                }
                             }
+                        }else {
+                            p.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
                         }
                     }
                 }else {
                     p.sendMessage(ChatColor.RED + "You do not have permission to use this command.");
                 }
             }
+        }else if (sender instanceof ConsoleCommandSender console){
+            getLogger().info("Only players may use this command.");
         }
 
         return true;
