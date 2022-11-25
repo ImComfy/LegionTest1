@@ -66,6 +66,8 @@ commands:
     description: Set a temporary home that may be removed once returned to.
   gameover:
     description: Call the GameEndEvent
+  nick:
+    description: Use a fake username.
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)
@@ -89,6 +91,8 @@ permissions:
     description: Allows the usage of /staffhome
   legiontest.staffhomeother:
     description: Allows the usage of /staffhome (player)
+  legiontest.nick:
+    description: Allows the usage of /nick
 groups:
   default:
     permissions:
