@@ -87,6 +87,7 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("badday").setExecutor(new BadDayCommand());
         getCommand("staffhome").setExecutor(new StaffHomeCommand(this));
         getCommand("nick").setExecutor(new NickCommand());
+        getCommand("unnick").setExecutor(new NickCommand());
 
         //Access TeleportUtils.java
         TeleportUtils utils = new TeleportUtils(this);

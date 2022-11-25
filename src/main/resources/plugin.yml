@@ -68,6 +68,8 @@ commands:
     description: Call the GameEndEvent
   nick:
     description: Use a fake username.
+  unnick:
+    description: Remove fake username.
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)
