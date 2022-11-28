@@ -60,6 +60,8 @@ commands:
   tp:
     aliases:
       - teleport
+  tpall:
+    permission: legiontest.tpall
   badday:
     description: :)
   staffhome:
