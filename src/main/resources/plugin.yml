@@ -60,6 +60,10 @@ commands:
   tp:
     aliases:
       - teleport
+  tpall:
+    description: Teleports all online players to someone
+    aliases:
+      - teleportall
   badday:
     description: :)
   staffhome:

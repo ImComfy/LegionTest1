@@ -2,15 +2,18 @@ package me.comfy.legiontest1;
 
 import me.comfy.legiontest1.commands.*;
 import me.comfy.legiontest1.listeners.*;
+import me.comfy.legiontest1.utility.*;
+import me.comfy.legiontest1.customenchants.*;
 import me.comfy.legiontest1.tasks.KeepDayTask;
 import me.comfy.legiontest1.tasks.TaskExample;
-import me.comfy.legiontest1.utility.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -19,6 +22,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -31,12 +35,14 @@ public final class LegionTest1 extends JavaPlugin {
     public ArrayList<Player> jumpingPlayers = new ArrayList<>();
 
     private static LegionTest1 plugin;
+    public static GlowEnchantment glowEnchantment;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
 
         plugin = this;
+        glowEnchantment = new GlowEnchantment("glow");
 
         //config.yml
         getConfig().options().copyDefaults();
@@ -60,6 +66,7 @@ public final class LegionTest1 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new WeatherListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         getServer().getPluginManager().registerEvents(new FallDamageListener(this), this);
+        getServer().getPluginManager().registerEvents(glowEnchantment, this);
 
         //register the commands
         getCommand("etime").setExecutor(new TimeCommand());
@@ -88,6 +95,9 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("staffhome").setExecutor(new StaffHomeCommand(this));
         getCommand("nick").setExecutor(new NickCommand());
         getCommand("unnick").setExecutor(new NickCommand());
+
+        //register the enchantments
+        registerEnchantment(glowEnchantment);
 
         //Access TeleportUtils.java
         TeleportUtils utils = new TeleportUtils(this);
@@ -242,12 +252,50 @@ public final class LegionTest1 extends JavaPlugin {
         return true;
     }
 
+    public static void registerEnchantment(Enchantment enchantment) {
+        boolean registered = true;
+        try {
+            Field f = Enchantment.class.getDeclaredField("acceptingNew");
+            f.setAccessible(true);
+            f.set(null, true);
+            Enchantment.registerEnchantment(enchantment);
+        } catch (Exception e) {
+            registered = false;
+            e.printStackTrace();
+        }
+        if(registered){
+            // It's been registered!
+        }
+    }
+
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
 
         getLogger().info("[LegionCore] Plugin shutting down.");
+
+        //unregister enchantments
+        try {
+            Field keyField = Enchantment.class.getDeclaredField("byKey");
+
+            keyField.setAccessible(true);
+            @SuppressWarnings("unchecked")
+            HashMap<NamespacedKey, Enchantment> byKey = (HashMap<NamespacedKey, Enchantment>) keyField.get(null);
+
+            if(byKey.containsKey(glowEnchantment.getKey())) {
+                byKey.remove(glowEnchantment.getKey());
+            }
+            Field nameField = Enchantment.class.getDeclaredField("byName");
+
+            nameField.setAccessible(true);
+            @SuppressWarnings("unchecked")
+            HashMap<String, Enchantment> byName = (HashMap<String, Enchantment>) nameField.get(null);
+
+            if(byName.containsKey(glowEnchantment.getName())) {
+                byName.remove(glowEnchantment.getName());
+            }
+        } catch (Exception ignored) { }
 
     }
 
