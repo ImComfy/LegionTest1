@@ -100,6 +100,9 @@ public final class LegionTest1 extends JavaPlugin {
         //register the enchantments
         registerEnchantment(glowEnchantment);
 
+        //register the enchantments
+        registerEnchantment(glowEnchantment);
+
         //Access TeleportUtils.java
         TeleportUtils utils = new TeleportUtils(this);
 
