@@ -74,6 +74,8 @@ commands:
     description: Use a fake username.
   unnick:
     description: Remove fake username.
+  test:
+    description: idk u tell me
 permissions:
   legiontest.spawnothers:
     description: Allows the use of /spawn (player)

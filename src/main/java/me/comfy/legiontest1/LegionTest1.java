@@ -95,6 +95,7 @@ public final class LegionTest1 extends JavaPlugin {
         getCommand("staffhome").setExecutor(new StaffHomeCommand(this));
         getCommand("nick").setExecutor(new NickCommand());
         getCommand("unnick").setExecutor(new NickCommand());
+        getCommand("test").setExecutor(new TestCommand());
 
         //register the enchantments
         registerEnchantment(glowEnchantment);
