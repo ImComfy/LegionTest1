@@ -25,12 +25,13 @@ import org.bukkit.scheduler.BukkitTask;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 public final class LegionTest1 extends JavaPlugin {
 
     public HashMap<Player, ArmorStand> armorstands = new HashMap<>();
 
-    public ArrayList<Player> vanishedlist = new ArrayList<>();
+    public ArrayList<UUID> vanishedlist = new ArrayList<>();
 
     public ArrayList<Player> jumpingPlayers = new ArrayList<>();
 
